@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Pedagio.Cadastro.Application.Commands.Marca;
+using Pedagio.Cadastro.Data;
 using Pedagio.Cadastro.Domain;
-using Pedagio.Core;
 
 namespace Pedagio.Api.Controllers
 {
@@ -14,10 +16,12 @@ namespace Pedagio.Api.Controllers
     public class MarcaController : ControllerBase
     {
         private readonly IMarcaStore _marcaStore;
+        private readonly IMediator _mediator;
 
-        public MarcaController(IMarcaStore marcaStore)
+        public MarcaController(IMarcaStore marcaStore, IMediator mediator)
         {
             _marcaStore = marcaStore;
+            _mediator = mediator;
         }
 
         /// <summary>
@@ -67,17 +71,17 @@ namespace Pedagio.Api.Controllers
         /// <summary>
         /// Grava uma nova Marca
         /// </summary>
-        /// <param name="marca">Dados da marca</param>
-        /// <returns>Dados da marca</returns>
+        /// <param name="command">Dados da marca</param>
+        /// <returns>Identificador da marca gravada</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(Marca), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Post([FromBody] Marca marca)
+        public async Task<IActionResult> Post([FromBody] CadastrarMarcaCommand command)
         {
             try
             {
-                marca.Id = await _marcaStore.InserirAsync(marca);
-                return Ok(marca);
+                var id = await _mediator.Send(command);
+                return Ok(id);
             }
             catch
             {

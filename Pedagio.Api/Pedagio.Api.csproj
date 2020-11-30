@@ -14,10 +14,11 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pedagio.Cadastro.Data\Pedagio.Cadastro.Data.csproj" />
+    <ProjectReference Include="..\Pedagio.Cadastro.Application\Pedagio.Cadastro.Application.csproj" />
   </ItemGroup>
 
 

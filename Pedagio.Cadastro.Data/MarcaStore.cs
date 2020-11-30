@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
 using Pedagio.Cadastro.Domain;
-using Pedagio.Core;
 using System;
 using System.Collections.Generic;
 using System.Data;

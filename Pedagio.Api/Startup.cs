@@ -12,7 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Pedagio.Cadastro.Data;
-using Pedagio.Core;
+using MediatR;
+using Pedagio.Cadastro.Application.Handlers.Marca;
 
 namespace Pedagio.Api
 {
@@ -34,6 +35,7 @@ namespace Pedagio.Api
             services.AddSwaggerGen(c => {
                 c.IncludeXmlComments(System.IO.Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml"));
             });
+            services.AddMediatR(typeof(Startup), typeof(CadastrarMarcaCommandHandler));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

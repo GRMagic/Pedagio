@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Cadastro.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Cadastro.Data", "Pedagio.Cadastro.Data\Pedagio.Cadastro.Data.csproj", "{4BC48499-FA37-472F-B810-5A1D2A9BBCAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Core", "Pedagio.Core\Pedagio.Core.csproj", "{0F370239-8881-4CBD-A82B-F709CB0028C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Cadastro.Application", "Pedagio.Cadastro.Application\Pedagio.Cadastro.Application.csproj", "{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,10 @@ Global
 		{4BC48499-FA37-472F-B810-5A1D2A9BBCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BC48499-FA37-472F-B810-5A1D2A9BBCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BC48499-FA37-472F-B810-5A1D2A9BBCAC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F370239-8881-4CBD-A82B-F709CB0028C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F370239-8881-4CBD-A82B-F709CB0028C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F370239-8881-4CBD-A82B-F709CB0028C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F370239-8881-4CBD-A82B-F709CB0028C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,7 +45,7 @@ Global
 		{DC264A4E-DA06-4593-A862-103925C66B71} = {9DE26D23-C2B5-4552-A3E6-F8C96EAAE989}
 		{593FC7DD-0B97-4A66-B36C-B4CEC314F3B5} = {AC7186E2-EC2E-4109-A8F1-27014943B5E5}
 		{4BC48499-FA37-472F-B810-5A1D2A9BBCAC} = {9DE26D23-C2B5-4552-A3E6-F8C96EAAE989}
-		{0F370239-8881-4CBD-A82B-F709CB0028C9} = {AC7186E2-EC2E-4109-A8F1-27014943B5E5}
+		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E} = {AC7186E2-EC2E-4109-A8F1-27014943B5E5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA092AE3-7326-40A6-BAE7-BE7EB9649FBC}

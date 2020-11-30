@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Pedagio.Core
+namespace Pedagio.Cadastro.Data
 {
     public interface IMarcaStore
     {
