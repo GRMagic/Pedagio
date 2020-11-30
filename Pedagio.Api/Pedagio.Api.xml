@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pedagio.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Pedagio.Api.Controllers.MarcaController.Get">
+            <summary>
+            Lista todas as marcas
+            </summary>
+            <returns>Lista de marcas</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.MarcaController.Get(System.Int32)">
+            <summary>
+            Busca uma marca específica
+            </summary>
+            <param name="id">Identificador da marca</param>
+            <returns>Dados da marca</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.MarcaController.Post(Pedagio.Cadastro.Domain.Marca)">
+            <summary>
+            Grava uma nova Marca
+            </summary>
+            <param name="marca">Dados da marca</param>
+            <returns>Dados da marca</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.MarcaController.Put(System.Int32,Pedagio.Cadastro.Domain.Marca)">
+            <summary>
+            Atualiza uma marca
+            </summary>
+            <param name="id">Identificador da marca</param>
+            <param name="marca">Dados da marca</param>
+            <returns>Dados da marca</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.MarcaController.Delete(System.Int32)">
+            <summary>
+            Exclui uma marca
+            </summary>
+            <param name="id">Identificador da marca</param>
+            <returns>Status 200 para sucesso</returns>
+        </member>
+    </members>
+</doc>
