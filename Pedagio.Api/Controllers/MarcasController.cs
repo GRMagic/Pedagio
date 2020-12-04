@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Pedagio.Cadastro.Application.Commands.Marca;
+using Pedagio.Cadastro.Application.Queries;
+using Pedagio.Cadastro.Application.ViewModels;
 using Pedagio.Cadastro.Data;
 using Pedagio.Cadastro.Domain;
 
@@ -13,14 +15,14 @@ namespace Pedagio.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MarcaController : ControllerBase
+    public class MarcasController : ControllerBase
     {
-        private readonly IMarcaStore _marcaStore;
         private readonly IMediator _mediator;
+        private readonly IMarcaQuery _marcaQuery;
 
-        public MarcaController(IMarcaStore marcaStore, IMediator mediator)
+        public MarcasController(IMarcaQuery marcaQuery, IMediator mediator)
         {
-            _marcaStore = marcaStore;
+            _marcaQuery = marcaQuery;
             _mediator = mediator;
         }
 
@@ -30,18 +32,10 @@ namespace Pedagio.Api.Controllers
         /// <returns>Lista de marcas</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Marca>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Get()
         {
-            try
-            {
-                var marca = await _marcaStore.BuscarAsync();
-                return Ok(marca);
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            var marca = await _marcaQuery.BuscarAsync();
+            return Ok(marca);
         }
 
         /// <summary>
@@ -51,21 +45,13 @@ namespace Pedagio.Api.Controllers
         /// <returns>Dados da marca</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Marca), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get(int id)
         {
-            try
-            {
-                var marca = await _marcaStore.BuscarPorIdAsync(id);
-                if (marca == null) return NotFound();
+            var marca = await _marcaQuery.BuscarPorIdAsync(id);
+            if (marca == null) return NotFound();
 
-                return Ok(marca);
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            return Ok(marca);
         }
 
         /// <summary>
@@ -74,49 +60,36 @@ namespace Pedagio.Api.Controllers
         /// <param name="command">Dados da marca</param>
         /// <returns>Identificador da marca gravada</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<IActionResult> Post([FromBody] CadastrarMarcaCommand command)
         {
-            try
-            {
-                var id = await _mediator.Send(command);
-                return Ok(id);
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            var id = await _mediator.Send(command);
+            return CreatedAtAction("Get", new { id }, command);
         }
 
         /// <summary>
         /// Atualiza uma marca
         /// </summary>
         /// <param name="id">Identificador da marca</param>
-        /// <param name="marca">Dados da marca</param>
+        /// <param name="model">Dados da marca</param>
         /// <returns>Dados da marca</returns>
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(Marca), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> Put(int id, [FromBody] Marca marca)
+        public async Task<IActionResult> Put(int id, [FromBody] AlterarMarcaViewModel model)
         {
-            try
+            var command = new AlterarMarcaCommand
             {
-
-                marca.Id = id;
-                if(await _marcaStore.AtualizarAsync(marca))
-                {
-                    return Ok(marca);
-                }
-                else
-                {
-                    return NotFound();
-                }
+                Id = id,
+                Nome = model.Nome
+            };
+            if (await _mediator.Send(command))
+            {
+                return Ok();
             }
-            catch
+            else
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
@@ -127,24 +100,17 @@ namespace Pedagio.Api.Controllers
         /// <returns>Status 200 para sucesso</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
-            try
+            var command = new ExcluirMarcaCommand() { Id = id };
+            if (await _mediator.Send(command))
             {
-                if (await _marcaStore.ExcluirAsync(id))
-                {
-                    return Ok();
-                }
-                else
-                {
-                    return NotFound();
-                }
+                return Ok();
             }
-            catch
+            else
             {
-                return BadRequest();
+                return NotFound();
             }
         }
     }
