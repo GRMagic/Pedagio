@@ -12,7 +12,7 @@ namespace Pedagio.Cadastro.Data.Dto
         public ModeloDto(Modelo modelo)
         {
             Id = modelo.Id;
-            IdMarca = modelo.Marca?.Id;
+            IdMarca = modelo.Marca.Id;
             Nome = modelo.Nome;
         }
 
@@ -31,6 +31,6 @@ namespace Pedagio.Cadastro.Data.Dto
 
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int? IdMarca { get; set; }
+        public int IdMarca { get; set; }
     }
 }

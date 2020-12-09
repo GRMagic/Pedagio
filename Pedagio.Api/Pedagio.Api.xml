@@ -4,6 +4,41 @@
         <name>Pedagio.Api</name>
     </assembly>
     <members>
+        <member name="M:Pedagio.Api.Controllers.CarrosController.Get">
+            <summary>
+            Lista todos os carros
+            </summary>
+            <returns>Lista de carros</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.CarrosController.Get(System.Int32)">
+            <summary>
+            Busca um carro específico
+            </summary>
+            <param name="id">Identificador do carro</param>
+            <returns>Dados da carro</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.CarrosController.Post(Pedagio.Cadastro.Application.Commands.Carro.CadastrarCarroCommand)">
+            <summary>
+            Grava um novo Carro
+            </summary>
+            <param name="command">Dados do carro</param>
+            <returns>Identificador do carro gravado</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.CarrosController.Put(System.Int32,Pedagio.Cadastro.Application.ViewModels.AlterarCarroViewModel)">
+            <summary>
+            Atualiza um carro
+            </summary>
+            <param name="id">Identificador do carro</param>
+            <param name="model">Dados do carro</param>
+            <returns>Dados do carro</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.CarrosController.Delete(System.Int32)">
+            <summary>
+            Exclui um carro
+            </summary>
+            <param name="id">Identificador do carro</param>
+            <returns>Status 200 para sucesso</returns>
+        </member>
         <member name="M:Pedagio.Api.Controllers.MarcasController.Get">
             <summary>
             Lista todas as marcas

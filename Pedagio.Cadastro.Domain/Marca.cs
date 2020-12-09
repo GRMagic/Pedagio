@@ -5,7 +5,7 @@
         /// <summary>
         /// Identificador da marca
         /// </summary>
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Nome da marca
