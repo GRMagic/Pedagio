@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <None Remove="Queries\ModeloQuery.cs~RFf2a6f71.TMP" />
   </ItemGroup>
 
   <ItemGroup>

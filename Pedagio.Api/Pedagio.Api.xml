@@ -39,5 +39,40 @@
             <param name="id">Identificador da marca</param>
             <returns>Status 200 para sucesso</returns>
         </member>
+        <member name="M:Pedagio.Api.Controllers.ModelosController.Get">
+            <summary>
+            Lista todos os modelos
+            </summary>
+            <returns>Lista de modelos</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.ModelosController.Get(System.Int32)">
+            <summary>
+            Busca um modelo específico
+            </summary>
+            <param name="id">Identificador do modelo</param>
+            <returns>Dados da modelo</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.ModelosController.Post(Pedagio.Cadastro.Application.Commands.Modelo.CadastrarModeloCommand)">
+            <summary>
+            Grava um novo Modelo
+            </summary>
+            <param name="command">Dados do modelo</param>
+            <returns>Identificador do modelo gravado</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.ModelosController.Put(System.Int32,Pedagio.Cadastro.Application.ViewModels.AlterarModeloViewModel)">
+            <summary>
+            Atualiza um modelo
+            </summary>
+            <param name="id">Identificador do modelo</param>
+            <param name="model">Dados do modelo</param>
+            <returns>Dados do modelo</returns>
+        </member>
+        <member name="M:Pedagio.Api.Controllers.ModelosController.Delete(System.Int32)">
+            <summary>
+            Exclui um modelo
+            </summary>
+            <param name="id">Identificador do modelo</param>
+            <returns>Status 200 para sucesso</returns>
+        </member>
     </members>
 </doc>

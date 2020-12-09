@@ -15,6 +15,7 @@ using Pedagio.Cadastro.Data;
 using MediatR;
 using Pedagio.Cadastro.Application.Handlers.Marca;
 using Pedagio.Cadastro.Application.Queries;
+using Pedagio.Cadastro.Application.Services;
 
 namespace Pedagio.Api
 {
@@ -32,7 +33,10 @@ namespace Pedagio.Api
         {
             services.AddScoped<IDbConnection>(db => ConexaoBanco.Conectar(Configuration.GetConnectionString("AppConnectionString")));
             services.AddScoped<IMarcaStore, MarcaStore>();
+            services.AddScoped<IModeloStore, ModeloStore>();
             services.AddScoped<IMarcaQuery, MarcaQuery>();
+            services.AddScoped<IModeloQuery, ModeloQuery>();
+            services.AddScoped<IPassagemService, PassagemService>();
             services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.IncludeXmlComments(System.IO.Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml"));
