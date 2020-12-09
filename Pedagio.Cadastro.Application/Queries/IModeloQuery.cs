@@ -20,5 +20,14 @@ namespace Pedagio.Cadastro.Application.Queries
         /// <param name="take">Quantos registros podem ser carregados</param>
         /// <returns>Lista com os modelos</returns>
         Task<IEnumerable<Modelo>> BuscarAsync(int skip = 0, int take = int.MaxValue);
+
+        /// <summary>
+        /// Lista os modelos de uma marca específica
+        /// </summary>
+        /// <param name="idMarca">Identificador da marca</param>
+        /// <param name="skip">Quantos registros devem ser ignorados</param>
+        /// <param name="take">Quantos registros podem ser carregados</param>
+        /// <returns>Lista com os modelos</returns>
+        Task<IEnumerable<Modelo>> BuscarPorMarcaAsync(int idMarca, int skip = 0, int take = int.MaxValue);
     }
 }

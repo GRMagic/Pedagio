@@ -19,6 +19,11 @@ namespace Pedagio.Cadastro.Application.Queries
             return await _modeloStore.BuscarAsync(skip, take);
         }
 
+        public async Task<IEnumerable<Modelo>> BuscarPorMarcaAsync(int idMarca, int skip = 0, int take = int.MaxValue)
+        {
+            return await _modeloStore.BuscarPorMarcaAsync(idMarca, skip, take);
+        }
+
         public async Task<Modelo> BuscarPorIdAsync(int id)
         {
             return await _modeloStore.BuscarPorIdAsync(id);

@@ -11,5 +11,6 @@ namespace Pedagio.Cadastro.Data
         Task<bool> ExcluirAsync(int id);
         Task<Modelo> BuscarPorIdAsync(int id);
         Task<IEnumerable<Modelo>> BuscarAsync(int skip = 0, int take = int.MaxValue);
+        Task<IEnumerable<Modelo>> BuscarPorMarcaAsync(int idMarca, int skip = 0, int take = int.MaxValue);
     }
 }

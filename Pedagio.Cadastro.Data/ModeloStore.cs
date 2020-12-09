@@ -66,5 +66,23 @@ namespace Pedagio.Cadastro.Data
             var dtos = await _dbConnection.QueryAsync<ModeloDto>(sql, new { Skip = skip, Take = take });
             return dtos.Select(d => d.ToModelo());
         }
+
+        public async Task<IEnumerable<Modelo>> BuscarPorMarcaAsync(int idMarca, int skip = 0, int take = int.MaxValue)
+        {
+            const string sql = @"select id_modelo as Id,
+                                        id_marca as IdMarca,
+                                        nome as Nome
+                                   from modelos
+                                  where id_marca = @IdMarca
+                                  limit @Skip, @Take";
+
+            var dtos = await _dbConnection.QueryAsync<ModeloDto>(sql, new 
+            {
+                IdMarca = idMarca, 
+                Skip = skip, 
+                Take = take 
+            });
+            return dtos.Select(d => d.ToModelo());
+        }
     }
 }

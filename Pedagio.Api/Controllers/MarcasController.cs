@@ -19,10 +19,12 @@ namespace Pedagio.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IMarcaQuery _marcaQuery;
+        private readonly IModeloQuery _modeloQuery;
 
-        public MarcasController(IMarcaQuery marcaQuery, IMediator mediator)
+        public MarcasController(IMarcaQuery marcaQuery, IModeloQuery modeloQuery, IMediator mediator)
         {
             _marcaQuery = marcaQuery;
+            _modeloQuery = modeloQuery;
             _mediator = mediator;
         }
 
@@ -49,6 +51,22 @@ namespace Pedagio.Api.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var marca = await _marcaQuery.BuscarPorIdAsync(id);
+            if (marca == null) return NotFound();
+
+            return Ok(marca);
+        }
+
+        /// <summary>
+        /// Lista os modelos de uma marca específica
+        /// </summary>
+        /// <param name="id">Identificador da marca</param>
+        /// <returns>Lista de modelos</returns>
+        [HttpGet("{id}/Modelos")]
+        [ProducesResponseType(typeof(IEnumerable<Modelo>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> GetModelos(int id)
+        {
+            var marca = await _modeloQuery.BuscarPorMarcaAsync(id);
             if (marca == null) return NotFound();
 
             return Ok(marca);

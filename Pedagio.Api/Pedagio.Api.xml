@@ -52,6 +52,13 @@
             <param name="id">Identificador da marca</param>
             <returns>Dados da marca</returns>
         </member>
+        <member name="M:Pedagio.Api.Controllers.MarcasController.GetModelos(System.Int32)">
+            <summary>
+            Lista os modelos de uma marca específica
+            </summary>
+            <param name="id">Identificador da marca</param>
+            <returns>Lista de modelos</returns>
+        </member>
         <member name="M:Pedagio.Api.Controllers.MarcasController.Post(Pedagio.Cadastro.Application.Commands.Marca.CadastrarMarcaCommand)">
             <summary>
             Grava uma nova Marca
