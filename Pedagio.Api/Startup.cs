@@ -1,21 +1,20 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Pedagio.Cadastro.Data;
 using MediatR;
 using Pedagio.Cadastro.Application.Handlers.Marca;
 using Pedagio.Cadastro.Application.Queries;
 using Pedagio.Cadastro.Application.Services;
+using Pedagio.Cadastro.Application.Utils;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace Pedagio.Api
 {
@@ -44,6 +43,12 @@ namespace Pedagio.Api
                 c.IncludeXmlComments(System.IO.Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml"));
             });
             services.AddMediatR(typeof(Startup), typeof(CadastrarMarcaCommandHandler));
+
+            AssemblyScanner.FindValidatorsInAssembly(typeof(CadastrarMarcaCommandHandler).Assembly)
+                .ForEach(item => services.AddScoped(item.InterfaceType, item.ValidatorType));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(PipelineValidationBehavior<,>));
+
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IApplicationModelProvider, ProduceResponseTypeModelProvider>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +66,8 @@ namespace Pedagio.Api
                 c.RoutePrefix = string.Empty;
             });
 
+            app.UseMiddleware<ErrorHandlerMiddleware>();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -69,7 +76,7 @@ namespace Pedagio.Api
             {
                 endpoints.MapControllers();
             });
-        }
 
+        }
     }
 }

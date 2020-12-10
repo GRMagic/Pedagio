@@ -51,7 +51,7 @@ namespace Pedagio.Cadastro.Data
                                   where id_modelo = @Id";
 
             var dto = await _dbConnection.QueryFirstOrDefaultAsync<ModeloDto>(sql, new { Id = id });
-            return dto.ToModelo();
+            return dto?.ToModelo();
 
         }
 

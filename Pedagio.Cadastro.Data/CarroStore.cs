@@ -52,7 +52,7 @@ namespace Pedagio.Cadastro.Data
                                   where id_carro = @Id";
 
             var dto = await _dbConnection.QueryFirstOrDefaultAsync<CarroDto>(sql, new { Id = id });
-            return dto.ToCarro();
+            return dto?.ToCarro();
 
         }
 

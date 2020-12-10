@@ -116,5 +116,45 @@
             <param name="id">Identificador do modelo</param>
             <returns>Status 200 para sucesso</returns>
         </member>
+        <member name="T:Pedagio.Api.ErrorViewModel">
+            <summary>
+            Detalhes do erro
+            </summary>
+        </member>
+        <member name="P:Pedagio.Api.ErrorViewModel.Code">
+            <summary>
+            Código do erro
+            </summary>
+        </member>
+        <member name="P:Pedagio.Api.ErrorViewModel.Message">
+            <summary>
+            Mensagens de erro
+            </summary>
+        </member>
+        <member name="T:Pedagio.Api.ValidationErrorViewModel">
+            <summary>
+            Erro de validação de campo
+            </summary>
+        </member>
+        <member name="P:Pedagio.Api.ValidationErrorViewModel.Errors">
+            <summary>
+            Lista de erros de validação
+            </summary>
+        </member>
+        <member name="T:Pedagio.Api.ValidationFailure">
+            <summary>
+            Falha na validação de um campo
+            </summary>
+        </member>
+        <member name="P:Pedagio.Api.ValidationFailure.PropertyName">
+            <summary>
+            Nome do campo
+            </summary>
+        </member>
+        <member name="P:Pedagio.Api.ValidationFailure.ErrorMessage">
+            <summary>
+            Descrição da falha
+            </summary>
+        </member>
     </members>
 </doc>
