@@ -23,5 +23,10 @@ namespace Pedagio.Cadastro.Application.Queries
         {
             return await _carroStore.BuscarPorIdAsync(id);
         }
+
+        public async Task<Carro> BuscarPorPlacaAsync(string placa)
+        {
+            return await _carroStore.BuscarPorPlacaAsync(placa);
+        }
     }
 }

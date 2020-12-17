@@ -14,6 +14,13 @@ namespace Pedagio.Cadastro.Application.Queries
         Task<Carro> BuscarPorIdAsync(int id);
 
         /// <summary>
+        /// Buscar um carro pela placa
+        /// </summary>
+        /// <param name="placa">Placa do carro</param>
+        /// <returns>Dados do carro ou null quando não encontrado</returns>
+        Task<Carro> BuscarPorPlacaAsync(string placa);
+
+        /// <summary>
         /// Lista os carros
         /// </summary>
         /// <param name="skip">Quantos registros devem ser ignorados</param>

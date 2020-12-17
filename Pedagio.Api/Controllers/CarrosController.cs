@@ -55,6 +55,22 @@ namespace Pedagio.Api.Controllers
         }
 
         /// <summary>
+        /// Busca um carro pela placa
+        /// </summary>
+        /// <param name="placa">placa do carro</param>
+        /// <returns>Dados da carro</returns>
+        [HttpGet("Placa/{placa}")]
+        [ProducesResponseType(typeof(Carro), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> Get(string placa)
+        {
+            var carro = await _carroQuery.BuscarPorPlacaAsync(placa);
+            if (carro == null) return NotFound();
+
+            return Ok(carro);
+        }
+
+        /// <summary>
         /// Grava um novo Carro
         /// </summary>
         /// <param name="command">Dados do carro</param>

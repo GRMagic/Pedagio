@@ -22,6 +22,13 @@
             <param name="id">Identificador do carro</param>
             <returns>Dados da carro</returns>
         </member>
+        <member name="M:Pedagio.Api.Controllers.CarrosController.Get(System.String)">
+            <summary>
+            Busca um carro pela placa
+            </summary>
+            <param name="placa">placa do carro</param>
+            <returns>Dados da carro</returns>
+        </member>
         <member name="M:Pedagio.Api.Controllers.CarrosController.Post(Pedagio.Cadastro.Application.Commands.Carro.CadastrarCarroCommand)">
             <summary>
             Grava um novo Carro
