@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Pedagio.Api.ViewModels;
 using Pedagio.Cadastro.Application.Commands.Modelo;
 using Pedagio.Cadastro.Application.Queries;
-using Pedagio.Cadastro.Application.ViewModels;
 using Pedagio.Cadastro.Domain;
 
 namespace Pedagio.Api.Controllers
@@ -31,10 +32,10 @@ namespace Pedagio.Api.Controllers
         /// </summary>
         /// <returns>Lista de modelos</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Modelo>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<ModeloViewModel>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get()
         {
-            var modelo = await _modeloQuery.BuscarAsync();
+            var modelo = (await _modeloQuery.BuscarAsync()).Select(m => new ModeloViewModel(m));
             return Ok(modelo);
         }
 
@@ -44,14 +45,14 @@ namespace Pedagio.Api.Controllers
         /// <param name="id">Identificador do modelo</param>
         /// <returns>Dados da modelo</returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Modelo), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ModeloViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get(int id)
         {
             var modelo = await _modeloQuery.BuscarPorIdAsync(id);
             if (modelo == null) return NotFound();
 
-            return Ok(modelo);
+            return Ok(new ModeloViewModel(modelo));
         }
 
         /// <summary>
@@ -71,19 +72,14 @@ namespace Pedagio.Api.Controllers
         /// Atualiza um modelo
         /// </summary>
         /// <param name="id">Identificador do modelo</param>
-        /// <param name="model">Dados do modelo</param>
+        /// <param name="command">Dados do modelo</param>
         /// <returns>Dados do modelo</returns>
         [HttpPut("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> Put(int id, [FromBody] AlterarModeloViewModel model)
+        public async Task<IActionResult> Put(int id, [FromBody] AlterarModeloCommand command)
         {
-            var command = new AlterarModeloCommand
-            {
-                Id = id,
-                Nome = model.Nome,
-                IdMarca = model.IdMarca
-            };
+            command.Id = id;
             if (await _mediator.Send(command))
             {
                 return Ok();

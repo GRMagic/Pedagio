@@ -44,10 +44,11 @@ namespace Pedagio.Api
             services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.IncludeXmlComments(System.IO.Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml"));
+                c.IncludeXmlComments(System.IO.Path.Combine(AppContext.BaseDirectory, $"{typeof(BusinessException).Assembly?.GetName().Name}.xml"));
             });
-            services.AddMediatR(typeof(Startup), typeof(CadastrarMarcaCommandHandler));
+            services.AddMediatR(typeof(Startup), typeof(BusinessException));
 
-            AssemblyScanner.FindValidatorsInAssembly(typeof(CadastrarMarcaCommandHandler).Assembly)
+            AssemblyScanner.FindValidatorsInAssembly(typeof(BusinessException).Assembly)
                 .ForEach(item => services.AddScoped(item.InterfaceType, item.ValidatorType));
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(PipelineValidationBehavior<,>));
 

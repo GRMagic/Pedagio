@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Pedagio.Api.ViewModels;
 using Pedagio.Cadastro.Application.Commands.Passagem;
 using Pedagio.Cadastro.Application.Queries;
 using Pedagio.Cadastro.Domain;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -30,10 +32,10 @@ namespace Pedagio.Api.Controllers
         /// </summary>
         /// <returns>Lista de passagens</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Passagem>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<PassagemViewModel>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Listar()
         {
-            var passagem = await _passagemQuery.BuscarAsync();
+            var passagem = (await _passagemQuery.BuscarAsync()).Select(p => new PassagemViewModel(p));
             return Ok(passagem);
         }
 
@@ -43,14 +45,14 @@ namespace Pedagio.Api.Controllers
         /// <param name="id">Identificador da passagem</param>
         /// <returns>Dados da passagem</returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Passagem), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(PassagemViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Buscar(int id)
         {
             var passagem = await _passagemQuery.BuscarPorIdAsync(id);
             if (passagem == null) return NotFound();
 
-            return Ok(passagem);
+            return Ok(new PassagemViewModel(passagem));
         }
 
         /// <summary>

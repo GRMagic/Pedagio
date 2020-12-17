@@ -1,7 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+    <DocumentationFile>D:\Mout's\Mini Curso C#\Exemplo\Pedágio\Pedagio.Cadastro.Application\Pedagio.Cadastro.Application.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

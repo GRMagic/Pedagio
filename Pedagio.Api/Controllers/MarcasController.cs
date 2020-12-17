@@ -5,9 +5,9 @@ using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Pedagio.Api.ViewModels;
 using Pedagio.Cadastro.Application.Commands.Marca;
 using Pedagio.Cadastro.Application.Queries;
-using Pedagio.Cadastro.Application.ViewModels;
 using Pedagio.Cadastro.Data;
 using Pedagio.Cadastro.Domain;
 
@@ -36,10 +36,10 @@ namespace Pedagio.Api.Controllers
         /// </summary>
         /// <returns>Lista de marcas</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Marca>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<MarcaViewModel>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get()
         {
-            var marca = await _marcaQuery.BuscarAsync();
+            var marca = (await _marcaQuery.BuscarAsync()).Select(m => new MarcaViewModel(m));
             return Ok(marca);
         }
 
@@ -49,14 +49,14 @@ namespace Pedagio.Api.Controllers
         /// <param name="id">Identificador da marca</param>
         /// <returns>Dados da marca</returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Marca), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(MarcaViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get(int id)
         {
             var marca = await _marcaQuery.BuscarPorIdAsync(id);
             if (marca == null) return NotFound();
 
-            return Ok(marca);
+            return Ok(new MarcaViewModel(marca));
         }
 
         /// <summary>
@@ -65,14 +65,12 @@ namespace Pedagio.Api.Controllers
         /// <param name="id">Identificador da marca</param>
         /// <returns>Lista de modelos</returns>
         [HttpGet("{id}/Modelos")]
-        [ProducesResponseType(typeof(IEnumerable<Modelo>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<ModeloViewModel>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> GetModelos(int id)
+        public async Task<IActionResult> Modelos(int id)
         {
-            var marca = await _modeloQuery.BuscarPorMarcaAsync(id);
-            if (marca == null) return NotFound();
-
-            return Ok(marca);
+            var modelos = (await _modeloQuery.BuscarPorMarcaAsync(id)).Select(m => new ModeloViewModel(m));
+            return Ok(modelos);
         }
 
         /// <summary>
@@ -92,18 +90,14 @@ namespace Pedagio.Api.Controllers
         /// Atualiza uma marca
         /// </summary>
         /// <param name="id">Identificador da marca</param>
-        /// <param name="model">Dados da marca</param>
+        /// <param name="command">Dados da marca</param>
         /// <returns>Dados da marca</returns>
         [HttpPut("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> Put(int id, [FromBody] AlterarMarcaViewModel model)
+        public async Task<IActionResult> Put(int id, [FromBody] AlterarMarcaCommand command)
         {
-            var command = new AlterarMarcaCommand
-            {
-                Id = id,
-                Nome = model.Nome
-            };
+            command.Id = id;
             if (await _mediator.Send(command))
             {
                 return Ok();

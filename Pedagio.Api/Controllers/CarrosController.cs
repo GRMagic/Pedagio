@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Pedagio.Api.ViewModels;
 using Pedagio.Cadastro.Application.Commands.Carro;
 using Pedagio.Cadastro.Application.Queries;
-using Pedagio.Cadastro.Application.ViewModels;
 using Pedagio.Cadastro.Domain;
 
 namespace Pedagio.Api.Controllers
@@ -34,11 +35,11 @@ namespace Pedagio.Api.Controllers
         /// </summary>
         /// <returns>Lista de carros</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Carro>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<CarroViewModel>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get()
         {
-            var carro = await _carroQuery.BuscarAsync();
-            return Ok(carro);
+            var carros = (await _carroQuery.BuscarAsync()).Select(c => new CarroViewModel(c));
+            return Ok(carros);
         }
 
         /// <summary>
@@ -47,14 +48,14 @@ namespace Pedagio.Api.Controllers
         /// <param name="id">Identificador do carro</param>
         /// <returns>Dados da carro</returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Carro), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(CarroViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get(int id)
         {
             var carro = await _carroQuery.BuscarPorIdAsync(id);
             if (carro == null) return NotFound();
 
-            return Ok(carro);
+            return Ok(new CarroViewModel(carro));
         }
 
         /// <summary>
@@ -63,14 +64,14 @@ namespace Pedagio.Api.Controllers
         /// <param name="placa">placa do carro</param>
         /// <returns>Dados da carro</returns>
         [HttpGet("Placa/{placa}")]
-        [ProducesResponseType(typeof(Carro), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(CarroViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get(string placa)
         {
             var carro = await _carroQuery.BuscarPorPlacaAsync(placa);
             if (carro == null) return NotFound();
 
-            return Ok(carro);
+            return Ok(new CarroViewModel(carro));
         }
 
         /// <summary>
@@ -90,20 +91,14 @@ namespace Pedagio.Api.Controllers
         /// Atualiza um carro
         /// </summary>
         /// <param name="id">Identificador do carro</param>
-        /// <param name="model">Dados do carro</param>
+        /// <param name="command">Dados do carro</param>
         /// <returns>Dados do carro</returns>
         [HttpPut("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> Put(int id, [FromBody] AlterarCarroViewModel model)
+        public async Task<IActionResult> Put(int id, [FromBody] AlterarCarroCommand command)
         {
-            var command = new AlterarCarroCommand
-            {
-                Id = id,
-                Placa = model.Placa,
-                Ano = model.Ano,
-                IdModelo = model.IdModelo
-            };
+            command.Id = id;
             if (await _mediator.Send(command))
             {
                 return Ok();
@@ -143,12 +138,12 @@ namespace Pedagio.Api.Controllers
         /// <param name="fim">Data para Fim do filtro</param>
         /// <returns></returns>
         [HttpGet("{id}/Passagens")]
-        [ProducesResponseType(typeof(IEnumerable<Passagem>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<PassagemViewModel>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Passagens(int id, [FromQuery] DateTime? inicio = null, [FromQuery] DateTime? fim = null)
         {
             var passagens = await _passagemQuery.BuscarPorCarroAsync(id, inicio ?? new DateTime(), fim ?? DateTime.MaxValue);
             
-            return Ok(passagens);
+            return Ok(passagens.Select(p => new PassagemViewModel(p)));
         }
     }
 }
