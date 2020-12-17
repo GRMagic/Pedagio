@@ -53,7 +53,6 @@ namespace Pedagio.Cadastro.Data
 
             var dto = await _dbConnection.QueryFirstOrDefaultAsync<CarroDto>(sql, new { Id = id });
             return dto?.ToCarro();
-
         }
 
         public async Task<IEnumerable<Carro>> BuscarAsync(int skip=0, int take=int.MaxValue)
@@ -67,6 +66,19 @@ namespace Pedagio.Cadastro.Data
 
             var dtos = await _dbConnection.QueryAsync<CarroDto>(sql, new { Skip = skip, Take = take });
             return dtos.Select(d => d.ToCarro());
+        }
+
+        public async Task<Carro> BuscarPorPlacaAsync(string placa)
+        {
+            const string sql = @"select id_carro as Id,
+                                        id_modelo as IdModelo,
+                                        placa as Placa,
+                                        ano as Ano
+                                   from carros
+                                  where placa = @Placa";
+
+            var dto = await _dbConnection.QueryFirstOrDefaultAsync<CarroDto>(sql, new { Placa = placa });
+            return dto?.ToCarro();
         }
     }
 }

@@ -11,26 +11,30 @@ namespace Pedagio.Cadastro.Data.Dto
             Id = carro.Id;
             Placa = carro.Placa;
             Ano = carro.Ano;
-            IdModelo = carro.Modelo.Id;
+            IdModelo = carro.Modelo?.Id;
         }
 
         public Carro ToCarro()
         {
-            return new Carro
+            var carro = new Carro
             {
                 Id = Id,
                 Placa = Placa,
-                Ano = Ano,
-                Modelo = new Modelo
-                {
-                    Id = IdModelo
-                }
+                Ano = Ano
             };
+            if (IdModelo > 0)
+            {
+                carro.Modelo = new Modelo
+                {
+                    Id = IdModelo.Value
+                };
+            }
+            return carro;
         }
 
         public int Id { get; set; }
         public string Placa { get; set; }
         public int Ano { get; set; }
-        public int IdModelo { get; set; }
+        public int? IdModelo { get; set; }
     }
 }

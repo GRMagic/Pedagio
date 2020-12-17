@@ -13,6 +13,9 @@ using Pedagio.Cadastro.Domain;
 
 namespace Pedagio.Api.Controllers
 {
+    /// <summary>
+    /// Controller responsável pelo cadastro de marcas
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class MarcasController : ControllerBase

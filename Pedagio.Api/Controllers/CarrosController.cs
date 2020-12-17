@@ -10,6 +10,9 @@ using Pedagio.Cadastro.Domain;
 
 namespace Pedagio.Api.Controllers
 {
+    /// <summary>
+    /// Controller responsável pelo cadastro de carros
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CarrosController : ControllerBase

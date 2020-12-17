@@ -15,6 +15,7 @@ using Pedagio.Cadastro.Application.Utils;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using System.Globalization;
 
 namespace Pedagio.Api
 {
@@ -34,9 +35,11 @@ namespace Pedagio.Api
             services.AddScoped<IMarcaStore, MarcaStore>();
             services.AddScoped<IModeloStore, ModeloStore>();
             services.AddScoped<ICarroStore, CarroStore>();
+            services.AddScoped<IPassagemStore, PassagemStore>();
             services.AddScoped<IMarcaQuery, MarcaQuery>();
             services.AddScoped<IModeloQuery, ModeloQuery>();
             services.AddScoped<ICarroQuery, CarroQuery>();
+            services.AddScoped<IPassagemQuery, PassagemQuery>();
             services.AddScoped<IPassagemService, PassagemService>();
             services.AddControllers();
             services.AddSwaggerGen(c => {
@@ -49,6 +52,7 @@ namespace Pedagio.Api
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(PipelineValidationBehavior<,>));
 
             services.TryAddEnumerable(ServiceDescriptor.Transient<IApplicationModelProvider, ProduceResponseTypeModelProvider>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

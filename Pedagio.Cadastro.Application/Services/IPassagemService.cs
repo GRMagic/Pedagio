@@ -9,8 +9,22 @@ namespace Pedagio.Cadastro.Application.Services
         /// <summary>
         /// Registra a passagem de um veículo
         /// </summary>
-        /// <param name="idVeiculo">Identificador do veículo</param>
-        /// <returns>true caso a passagem tenha sido registrada e false caso não tenha registrado a passagem</returns>
-        Task<bool> RegistrarPassagem(int idVeiculo);
+        /// <param name="placa">Placa do veículo</param>
+        /// <returns>Identificador da passagem registrada</returns>
+        Task<int> EfetuarPassagem(string placa);
+
+        /// <summary>
+        /// Registra uma evasão utilizando a placa do carro
+        /// </summary>
+        /// <param name="placa">Placa do carro</param>
+        /// <returns>Identificador da evasão registrada</returns>
+        Task<int> RegistrarEvasao(string placa);
+
+        /// <summary>
+        /// Registra uma evasão utilizando o id do carro
+        /// </summary>
+        /// <param name="idCarro">Identificador do carro</param>
+        /// <returns>Identificador da evasão registrada</returns>
+        Task<int> RegistrarEvasao(int idCarro);
     }
 }
