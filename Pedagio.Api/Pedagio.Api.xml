@@ -51,6 +51,15 @@
             <param name="id">Identificador do carro</param>
             <returns>Status 200 para sucesso</returns>
         </member>
+        <member name="M:Pedagio.Api.Controllers.CarrosController.Passagens(System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Lista as passagens de um carro
+            </summary>
+            <param name="id">Identificador do carro</param>
+            <param name="inicio">Data para início do filtro</param>
+            <param name="fim">Data para Fim do filtro</param>
+            <returns></returns>
+        </member>
         <member name="T:Pedagio.Api.Controllers.MarcasController">
             <summary>
             Controller responsável pelo cadastro de marcas
