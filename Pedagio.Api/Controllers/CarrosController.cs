@@ -21,12 +21,12 @@ namespace Pedagio.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ICarroQuery _carroQuery;
-        private readonly IPassagemQuery _passagemQuery;
+        //private readonly IPassagemQuery _passagemQuery;
 
-        public CarrosController(ICarroQuery carroQuery, IPassagemQuery passagemQuery, IMediator mediator)
+        public CarrosController(ICarroQuery carroQuery,/* IPassagemQuery passagemQuery,*/ IMediator mediator)
         {
             _carroQuery = carroQuery;
-            _passagemQuery = passagemQuery;
+            //_passagemQuery = passagemQuery;
             _mediator = mediator;
         }
 
@@ -130,20 +130,20 @@ namespace Pedagio.Api.Controllers
             }
         }
 
-        /// <summary>
-        /// Lista as passagens de um carro
-        /// </summary>
-        /// <param name="id">Identificador do carro</param>
-        /// <param name="inicio">Data para início do filtro</param>
-        /// <param name="fim">Data para Fim do filtro</param>
-        /// <returns></returns>
-        [HttpGet("{id}/Passagens")]
-        [ProducesResponseType(typeof(IEnumerable<PassagemViewModel>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> Passagens(int id, [FromQuery] DateTime? inicio = null, [FromQuery] DateTime? fim = null)
-        {
-            var passagens = await _passagemQuery.BuscarPorCarroAsync(id, inicio ?? new DateTime(), fim ?? DateTime.MaxValue);
+        ///// <summary>
+        ///// Lista as passagens de um carro
+        ///// </summary>
+        ///// <param name="id">Identificador do carro</param>
+        ///// <param name="inicio">Data para início do filtro</param>
+        ///// <param name="fim">Data para Fim do filtro</param>
+        ///// <returns></returns>
+        //[HttpGet("{id}/Passagens")]
+        //[ProducesResponseType(typeof(IEnumerable<PassagemViewModel>), (int)HttpStatusCode.OK)]
+        //public async Task<IActionResult> Passagens(int id, [FromQuery] DateTime? inicio = null, [FromQuery] DateTime? fim = null)
+        //{
+        //    var passagens = await _passagemQuery.BuscarPorCarroAsync(id, inicio ?? new DateTime(), fim ?? DateTime.MaxValue);
             
-            return Ok(passagens.Select(p => new PassagemViewModel(p)));
-        }
+        //    return Ok(passagens.Select(p => new PassagemViewModel(p)));
+        //}
     }
 }

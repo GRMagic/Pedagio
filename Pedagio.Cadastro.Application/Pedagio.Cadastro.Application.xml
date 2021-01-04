@@ -94,21 +94,6 @@
             Identificador do modelo
             </summary>
         </member>
-        <member name="P:Pedagio.Cadastro.Application.Commands.Passagem.EfetuarPassagemCommand.Placa">
-            <summary>
-            Placa do veículo
-            </summary>
-        </member>
-        <member name="P:Pedagio.Cadastro.Application.Commands.Passagem.RegistrarEvasaoCommand.IdCarro">
-            <summary>
-            Identificador do carro
-            </summary>
-        </member>
-        <member name="P:Pedagio.Cadastro.Application.Commands.Passagem.RegistrarEvasaoCommand.Placa">
-            <summary>
-            Placa do carro
-            </summary>
-        </member>
         <member name="M:Pedagio.Cadastro.Application.Queries.ICarroQuery.BuscarPorIdAsync(System.Int32)">
             <summary>
             Buscar um carro pelo seu identificador
@@ -169,51 +154,6 @@
             <param name="skip">Quantos registros devem ser ignorados</param>
             <param name="take">Quantos registros podem ser carregados</param>
             <returns>Lista com os modelos</returns>
-        </member>
-        <member name="M:Pedagio.Cadastro.Application.Queries.IPassagemQuery.BuscarPorIdAsync(System.Int32)">
-            <summary>
-            Buscar uma passagem pelo seu identificador
-            </summary>
-            <param name="id">Identificador</param>
-            <returns>Dados do passagem ou null quando não encontrada</returns>
-        </member>
-        <member name="M:Pedagio.Cadastro.Application.Queries.IPassagemQuery.BuscarAsync(System.Int32,System.Int32)">
-            <summary>
-            Lista as passagens
-            </summary>
-            <param name="skip">Quantos registros devem ser ignorados</param>
-            <param name="take">Quantos registros podem ser carregados</param>
-            <returns>Lista com os passagems</returns>
-        </member>
-        <member name="M:Pedagio.Cadastro.Application.Queries.IPassagemQuery.BuscarPorCarroAsync(System.Int32,System.DateTime,System.DateTime)">
-            <summary>
-            Busca as passagens de um carro
-            </summary>
-            <param name="idCarro">Identificador do carro</param>
-            <param name="inicio">Data inicial para filtro</param>
-            <param name="fim">Data final para filtro</param>
-            <returns>Lista de passagens do carro</returns>
-        </member>
-        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.EfetuarPassagem(System.String)">
-            <summary>
-            Registra a passagem de um veículo
-            </summary>
-            <param name="placa">Placa do veículo</param>
-            <returns>Identificador da passagem registrada</returns>
-        </member>
-        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.RegistrarEvasao(System.String)">
-            <summary>
-            Registra uma evasão utilizando a placa do carro
-            </summary>
-            <param name="placa">Placa do carro</param>
-            <returns>Identificador da evasão registrada</returns>
-        </member>
-        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.RegistrarEvasao(System.Int32)">
-            <summary>
-            Registra uma evasão utilizando o id do carro
-            </summary>
-            <param name="idCarro">Identificador do carro</param>
-            <returns>Identificador da evasão registrada</returns>
         </member>
         <member name="T:Pedagio.Cadastro.Application.Utils.BusinessException">
             <summary>

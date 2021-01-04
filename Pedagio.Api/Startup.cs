@@ -10,7 +10,7 @@ using Pedagio.Cadastro.Data;
 using MediatR;
 using Pedagio.Cadastro.Application.Handlers.Marca;
 using Pedagio.Cadastro.Application.Queries;
-using Pedagio.Cadastro.Application.Services;
+//using Pedagio.Cadastro.Application.Services;
 using Pedagio.Cadastro.Application.Utils;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -35,12 +35,12 @@ namespace Pedagio.Api
             services.AddScoped<IMarcaStore, MarcaStore>();
             services.AddScoped<IModeloStore, ModeloStore>();
             services.AddScoped<ICarroStore, CarroStore>();
-            services.AddScoped<IPassagemStore, PassagemStore>();
+            //services.AddScoped<IPassagemStore, PassagemStore>();
             services.AddScoped<IMarcaQuery, MarcaQuery>();
             services.AddScoped<IModeloQuery, ModeloQuery>();
             services.AddScoped<ICarroQuery, CarroQuery>();
-            services.AddScoped<IPassagemQuery, PassagemQuery>();
-            services.AddScoped<IPassagemService, PassagemService>();
+            //services.AddScoped<IPassagemQuery, PassagemQuery>();
+            //services.AddScoped<IPassagemService, PassagemService>();
             services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.IncludeXmlComments(System.IO.Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml"));

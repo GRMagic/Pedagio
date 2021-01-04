@@ -51,15 +51,6 @@
             <param name="id">Identificador do carro</param>
             <returns>Status 200 para sucesso</returns>
         </member>
-        <member name="M:Pedagio.Api.Controllers.CarrosController.Passagens(System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
-            <summary>
-            Lista as passagens de um carro
-            </summary>
-            <param name="id">Identificador do carro</param>
-            <param name="inicio">Data para início do filtro</param>
-            <param name="fim">Data para Fim do filtro</param>
-            <returns></returns>
-        </member>
         <member name="T:Pedagio.Api.Controllers.MarcasController">
             <summary>
             Controller responsável pelo cadastro de marcas
@@ -147,38 +138,6 @@
             <param name="id">Identificador do modelo</param>
             <returns>Status 200 para sucesso</returns>
         </member>
-        <member name="T:Pedagio.Api.Controllers.PassagensController">
-            <summary>
-            Controller responsável pelo passagem dos carros
-            </summary>
-        </member>
-        <member name="M:Pedagio.Api.Controllers.PassagensController.Listar">
-            <summary>
-            Lista todas as passagens
-            </summary>
-            <returns>Lista de passagens</returns>
-        </member>
-        <member name="M:Pedagio.Api.Controllers.PassagensController.Buscar(System.Int32)">
-            <summary>
-            Busca uma passagem específica
-            </summary>
-            <param name="id">Identificador da passagem</param>
-            <returns>Dados da passagem</returns>
-        </member>
-        <member name="M:Pedagio.Api.Controllers.PassagensController.EfetuarPassagem(Pedagio.Cadastro.Application.Commands.Passagem.EfetuarPassagemCommand)">
-            <summary>
-            Efetua a passagem de um carro no momento que ela ocorre
-            </summary>
-            <param name="command">Dados da passagem</param>
-            <returns>Identificador da passagem registrada</returns>
-        </member>
-        <member name="M:Pedagio.Api.Controllers.PassagensController.RegistarEvasao(Pedagio.Cadastro.Application.Commands.Passagem.RegistrarEvasaoCommand)">
-            <summary>
-            Registra a evasão de um carro no momento que ela ocorre
-            </summary>
-            <param name="command">Dados da evasão</param>
-            <returns>Identificador da evasão registrada</returns>
-        </member>
         <member name="T:Pedagio.Api.ErrorViewModel">
             <summary>
             Detalhes do erro
@@ -262,26 +221,6 @@
         <member name="P:Pedagio.Api.ViewModels.ModeloViewModel.IdMarca">
             <summary>
             Identificação da marca
-            </summary>
-        </member>
-        <member name="P:Pedagio.Api.ViewModels.PassagemViewModel.Id">
-            <summary>
-            Identificação da passagem
-            </summary>
-        </member>
-        <member name="P:Pedagio.Api.ViewModels.PassagemViewModel.IdCarro">
-            <summary>
-            Identificação do carro
-            </summary>
-        </member>
-        <member name="P:Pedagio.Api.ViewModels.PassagemViewModel.Momento">
-            <summary>
-            Momento que a passagem foi realizada
-            </summary>
-        </member>
-        <member name="P:Pedagio.Api.ViewModels.PassagemViewModel.Evasao">
-            <summary>
-            Foi uma evasão
             </summary>
         </member>
     </members>
