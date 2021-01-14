@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Mout's\Mini Curso C#\Exemplo\Pedágio\Pedagio.Api\Pedagio.Api.xml</DocumentationFile>
+    <DocumentationFile>.\Pedagio.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

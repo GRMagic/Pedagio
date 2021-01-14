@@ -6,7 +6,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>5</WarningLevel>
-    <DocumentationFile>D:\Mout's\Mini Curso C#\Exemplo\Pedágio\Pedagio.Cadastro.Application\Pedagio.Cadastro.Application.xml</DocumentationFile>
+    <DocumentationFile>.\Pedagio.Cadastro.Application.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
