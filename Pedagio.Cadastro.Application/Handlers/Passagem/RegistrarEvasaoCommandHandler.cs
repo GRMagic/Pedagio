@@ -19,11 +19,11 @@ namespace Pedagio.Cadastro.Application.Handlers.Passagem
         {
             if(request.IdCarro > 0)
             {
-                return await _passagemService.RegistrarEvasao(request.IdCarro);
+                return await _passagemService.RegistrarEvasaoAsync(request.IdCarro);
             }
             else
             {
-                return await _passagemService.RegistrarEvasao(request.Placa);
+                return await _passagemService.RegistrarEvasaoAsync(request.Placa);
             }
         }
     }

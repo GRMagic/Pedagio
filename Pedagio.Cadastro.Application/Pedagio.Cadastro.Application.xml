@@ -194,21 +194,21 @@
             <param name="fim">Data final para filtro</param>
             <returns>Lista de passagens do carro</returns>
         </member>
-        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.EfetuarPassagem(System.String)">
+        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.EfetuarPassagemAsync(System.String)">
             <summary>
             Registra a passagem de um veículo
             </summary>
             <param name="placa">Placa do veículo</param>
             <returns>Identificador da passagem registrada</returns>
         </member>
-        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.RegistrarEvasao(System.String)">
+        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.RegistrarEvasaoAsync(System.String)">
             <summary>
             Registra uma evasão utilizando a placa do carro
             </summary>
             <param name="placa">Placa do carro</param>
             <returns>Identificador da evasão registrada</returns>
         </member>
-        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.RegistrarEvasao(System.Int32)">
+        <member name="M:Pedagio.Cadastro.Application.Services.IPassagemService.RegistrarEvasaoAsync(System.Int32)">
             <summary>
             Registra uma evasão utilizando o id do carro
             </summary>

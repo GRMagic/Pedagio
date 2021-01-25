@@ -17,12 +17,12 @@ namespace Pedagio.Cadastro.Application.Services
             _carroStore = carroStore;
         }
 
-        public async Task<int> EfetuarPassagem(string placa)
+        public async Task<int> EfetuarPassagemAsync(string placa)
         {
             var carro = await _carroStore.BuscarPorPlacaAsync(placa);
             if(carro == null)
             {
-                throw new BusinessException("Não foi encontrado nenhum carro com essa placa.");
+                throw new BusinessException(Language.Mensagens.ErroPlacaNaoEncontrada);
             }
 
             var passagem = new Passagem()
@@ -34,7 +34,7 @@ namespace Pedagio.Cadastro.Application.Services
             return await _passagemStore.InserirAsync(passagem);
         }
 
-        public async Task<int> RegistrarEvasao(string placa)
+        public async Task<int> RegistrarEvasaoAsync(string placa)
         {
             var carro = await _carroStore.BuscarPorPlacaAsync(placa);
             if (carro == null)
@@ -49,12 +49,12 @@ namespace Pedagio.Cadastro.Application.Services
             return await RegistrarEvasao(carro);
         }
 
-        public async Task<int> RegistrarEvasao(int idCarro)
+        public async Task<int> RegistrarEvasaoAsync(int idCarro)
         {
             var carro = await _carroStore.BuscarPorIdAsync(idCarro);
             if (carro == null)
             {
-                throw new BusinessException("Não foi encontrado nenhum carro com o id informado.");
+                throw new BusinessException(Language.Mensagens.ErroIdCarroNaoEncontrado);
             }
 
             return await RegistrarEvasao(carro);

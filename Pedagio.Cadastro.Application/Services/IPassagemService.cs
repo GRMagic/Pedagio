@@ -11,20 +11,20 @@ namespace Pedagio.Cadastro.Application.Services
         /// </summary>
         /// <param name="placa">Placa do veículo</param>
         /// <returns>Identificador da passagem registrada</returns>
-        Task<int> EfetuarPassagem(string placa);
+        Task<int> EfetuarPassagemAsync(string placa);
 
         /// <summary>
         /// Registra uma evasão utilizando a placa do carro
         /// </summary>
         /// <param name="placa">Placa do carro</param>
         /// <returns>Identificador da evasão registrada</returns>
-        Task<int> RegistrarEvasao(string placa);
+        Task<int> RegistrarEvasaoAsync(string placa);
 
         /// <summary>
         /// Registra uma evasão utilizando o id do carro
         /// </summary>
         /// <param name="idCarro">Identificador do carro</param>
         /// <returns>Identificador da evasão registrada</returns>
-        Task<int> RegistrarEvasao(int idCarro);
+        Task<int> RegistrarEvasaoAsync(int idCarro);
     }
 }

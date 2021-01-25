@@ -17,7 +17,7 @@ namespace Pedagio.Cadastro.Application.Handlers.Passagem
 
         public async Task<int> Handle(EfetuarPassagemCommand request, CancellationToken cancellationToken)
         {
-            return await _passagemService.EfetuarPassagem(request.Placa);
+            return await _passagemService.EfetuarPassagemAsync(request.Placa);
         }
     }
 }

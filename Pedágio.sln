@@ -7,13 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{AC7186
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9DE26D23-C2B5-4552-A3E6-F8C96EAAE989}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Api", "Pedagio.Api\Pedagio.Api.csproj", "{DC264A4E-DA06-4593-A862-103925C66B71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedagio.Api", "Pedagio.Api\Pedagio.Api.csproj", "{DC264A4E-DA06-4593-A862-103925C66B71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Cadastro.Domain", "Pedagio.Cadastro.Domain\Pedagio.Cadastro.Domain.csproj", "{593FC7DD-0B97-4A66-B36C-B4CEC314F3B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedagio.Cadastro.Domain", "Pedagio.Cadastro.Domain\Pedagio.Cadastro.Domain.csproj", "{593FC7DD-0B97-4A66-B36C-B4CEC314F3B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Cadastro.Data", "Pedagio.Cadastro.Data\Pedagio.Cadastro.Data.csproj", "{4BC48499-FA37-472F-B810-5A1D2A9BBCAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedagio.Cadastro.Data", "Pedagio.Cadastro.Data\Pedagio.Cadastro.Data.csproj", "{4BC48499-FA37-472F-B810-5A1D2A9BBCAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Cadastro.Application", "Pedagio.Cadastro.Application\Pedagio.Cadastro.Application.csproj", "{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedagio.Cadastro.Application", "Pedagio.Cadastro.Application\Pedagio.Cadastro.Application.csproj", "{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{880A5C24-791F-46E9-91E9-77F32D0A9E73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Test.Unit", "Pedagio.Test.Unit\Pedagio.Test.Unit.csproj", "{D42A67F4-E3C2-4BF5-9EA6-B649DFF256BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSubstituteAutoMocker", "NSubstituteAutoMocker\NSubstituteAutoMocker.csproj", "{B395ECBB-898A-41EB-B837-9243A9BFE4AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedagio.Language", "Pedagio.Language\Pedagio.Language.csproj", "{BC116BB2-CB48-494A-85BC-8E00E6EA39E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +45,18 @@ Global
 		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D42A67F4-E3C2-4BF5-9EA6-B649DFF256BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D42A67F4-E3C2-4BF5-9EA6-B649DFF256BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D42A67F4-E3C2-4BF5-9EA6-B649DFF256BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D42A67F4-E3C2-4BF5-9EA6-B649DFF256BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B395ECBB-898A-41EB-B837-9243A9BFE4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B395ECBB-898A-41EB-B837-9243A9BFE4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B395ECBB-898A-41EB-B837-9243A9BFE4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B395ECBB-898A-41EB-B837-9243A9BFE4AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC116BB2-CB48-494A-85BC-8E00E6EA39E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC116BB2-CB48-494A-85BC-8E00E6EA39E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC116BB2-CB48-494A-85BC-8E00E6EA39E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC116BB2-CB48-494A-85BC-8E00E6EA39E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +66,9 @@ Global
 		{593FC7DD-0B97-4A66-B36C-B4CEC314F3B5} = {AC7186E2-EC2E-4109-A8F1-27014943B5E5}
 		{4BC48499-FA37-472F-B810-5A1D2A9BBCAC} = {9DE26D23-C2B5-4552-A3E6-F8C96EAAE989}
 		{96D282EB-9B49-4B5B-8A40-FAABB3B4DE6E} = {AC7186E2-EC2E-4109-A8F1-27014943B5E5}
+		{D42A67F4-E3C2-4BF5-9EA6-B649DFF256BC} = {880A5C24-791F-46E9-91E9-77F32D0A9E73}
+		{B395ECBB-898A-41EB-B837-9243A9BFE4AD} = {880A5C24-791F-46E9-91E9-77F32D0A9E73}
+		{BC116BB2-CB48-494A-85BC-8E00E6EA39E4} = {AC7186E2-EC2E-4109-A8F1-27014943B5E5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA092AE3-7326-40A6-BAE7-BE7EB9649FBC}
