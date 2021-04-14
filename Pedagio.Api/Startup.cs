@@ -18,6 +18,7 @@ using System.Globalization;
 using Pedagio.Cadastro.Application.Commands.Carro;
 using Pedagio.Cadastro.Application.Stores;
 using Pedagio.Cadastro.Data;
+using Pedagio.Cadastro.Application;
 
 namespace Pedagio.Api
 {
@@ -33,20 +34,9 @@ namespace Pedagio.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDbConnection>(db => ConexaoBanco.Conectar(Configuration.GetConnectionString("AppConnectionString")));
-            services.AddScoped<IMarcaCommandStore, MarcaStore>();
-            services.AddScoped<IMarcaQueryStore, MarcaStore>();
-            services.AddScoped<IModeloCommandStore, ModeloStore>();
-            services.AddScoped<IModeloQueryStore, ModeloStore>();
-            services.AddScoped<ICarroCommandStore, CarroStore>();
-            services.AddScoped<ICarroQueryStore, CarroStore>();
-            services.AddScoped<IPassagemCommandStore, PassagemStore>();
-            services.AddScoped<IPassagemQueryStore, PassagemStore>();
-            services.AddScoped<IMarcaQuery, MarcaQuery>();
-            services.AddScoped<IModeloQuery, ModeloQuery>();
-            services.AddScoped<ICarroQuery, CarroQuery>();
-            services.AddScoped<IPassagemQuery, PassagemQuery>();
-            services.AddScoped<IPassagemService, PassagemService>();
+            services.AddCadastroData(Configuration.GetConnectionString("AppConnectionString"));
+            services.AddCadastroQueries();
+            services.AddCadastroServices();
             services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.IncludeXmlComments(System.IO.Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml"));
