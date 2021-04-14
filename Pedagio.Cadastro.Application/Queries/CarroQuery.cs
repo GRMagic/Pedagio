@@ -1,4 +1,4 @@
-﻿using Pedagio.Cadastro.Data;
+﻿using Pedagio.Cadastro.Application.Stores;
 using Pedagio.Cadastro.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,19 +14,19 @@ namespace Pedagio.Cadastro.Application.Queries
             _carroStore = carroStore;
         }
 
-        public async Task<IEnumerable<Carro>> BuscarAsync(int skip = 0, int take = int.MaxValue)
+        public Task<IEnumerable<Carro>> BuscarAsync(int skip = 0, int take = int.MaxValue)
         {
-            return await _carroStore.BuscarAsync(skip, take);
+            return _carroStore.BuscarAsync(skip, take);
         }
 
-        public async Task<Carro> BuscarPorIdAsync(int id)
+        public Task<Carro> BuscarPorIdAsync(int id)
         {
-            return await _carroStore.BuscarPorIdAsync(id);
+            return _carroStore.BuscarPorIdAsync(id);
         }
 
-        public async Task<Carro> BuscarPorPlacaAsync(string placa)
+        public Task<Carro> BuscarPorPlacaAsync(string placa)
         {
-            return await _carroStore.BuscarPorPlacaAsync(placa);
+            return _carroStore.BuscarPorPlacaAsync(placa);
         }
     }
 }

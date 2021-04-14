@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Pedagio.Cadastro.Application.Commands.Modelo;
-using Pedagio.Cadastro.Data;
+using Pedagio.Cadastro.Application.Stores;
 using System;
 using System.Collections.Generic;
 using System.Text;

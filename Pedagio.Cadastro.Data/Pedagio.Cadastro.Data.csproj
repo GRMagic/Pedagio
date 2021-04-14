@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pedagio.Cadastro.Domain\Pedagio.Cadastro.Domain.csproj" />
+    <ProjectReference Include="..\Pedagio.Cadastro.Application\Pedagio.Cadastro.Application.csproj" />
   </ItemGroup>
 
 </Project>

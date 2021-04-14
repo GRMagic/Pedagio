@@ -1,5 +1,6 @@
-﻿using Pedagio.Cadastro.Application.Utils;
-using Pedagio.Cadastro.Data;
+﻿using Pedagio.Cadastro.Application.Commands.Carro;
+using Pedagio.Cadastro.Application.Stores;
+using Pedagio.Cadastro.Application.Utils;
 using Pedagio.Cadastro.Domain;
 using System;
 using System.Threading.Tasks;

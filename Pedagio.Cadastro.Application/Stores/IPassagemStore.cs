@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Pedagio.Cadastro.Data
+namespace Pedagio.Cadastro.Application.Stores
 {
     public interface IPassagemStore
     {

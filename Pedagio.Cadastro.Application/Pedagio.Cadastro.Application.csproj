@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pedagio.Cadastro.Data\Pedagio.Cadastro.Data.csproj" />
+    <ProjectReference Include="..\Pedagio.Cadastro.Domain\Pedagio.Cadastro.Domain.csproj" />
     <ProjectReference Include="..\Pedagio.Language\Pedagio.Language.csproj" />
   </ItemGroup>
 

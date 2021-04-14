@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
+using Pedagio.Cadastro.Application.Stores;
 using Pedagio.Cadastro.Domain;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,11 @@ namespace Pedagio.Cadastro.Data
             _dbConnection = dbConnection;
         }
 
-        public async Task<int> InserirAsync(Marca marca)
+        public Task<int> InserirAsync(Marca marca)
         {
             const string sql = @"insert into marcas (id_marca, nome) values (@Id, @Nome); select last_insert_id();";
 
-            return await _dbConnection.ExecuteScalarAsync<int>(sql, marca);
+            return _dbConnection.ExecuteScalarAsync<int>(sql, marca);
         }
 
         public async Task<bool> AtualizarAsync(Marca marca)
@@ -42,24 +43,24 @@ namespace Pedagio.Cadastro.Data
             return registrosAfetados == 1;
         }
 
-        public async Task<Marca> BuscarPorIdAsync(int id)
+        public Task<Marca> BuscarPorIdAsync(int id)
         {
             const string sql = @"select id_marca as Id,
                                         nome as Nome
                                    from marcas
                                   where id_marca = @Id";
 
-            return await _dbConnection.QueryFirstOrDefaultAsync<Marca>(sql, new { Id = id });
+            return _dbConnection.QueryFirstOrDefaultAsync<Marca>(sql, new { Id = id });
         }
 
-        public async Task<IEnumerable<Marca>> BuscarAsync(int skip=0, int take=int.MaxValue)
+        public Task<IEnumerable<Marca>> BuscarAsync(int skip=0, int take=int.MaxValue)
         {
             const string sql = @"select id_marca as Id,
                                         nome as Nome
                                    from marcas
                                   limit @Skip, @Take";
 
-            return await _dbConnection.QueryAsync<Marca>(sql, new { Skip = skip, Take = take });
+            return _dbConnection.QueryAsync<Marca>(sql, new { Skip = skip, Take = take });
         }
     }
 }

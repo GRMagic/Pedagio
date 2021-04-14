@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Pedagio.Cadastro.Data;
 using MediatR;
 using Pedagio.Cadastro.Application.Handlers.Marca;
 using Pedagio.Cadastro.Application.Queries;
@@ -16,6 +15,9 @@ using FluentValidation;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using System.Globalization;
+using Pedagio.Cadastro.Application.Commands.Carro;
+using Pedagio.Cadastro.Application.Stores;
+using Pedagio.Cadastro.Data;
 
 namespace Pedagio.Api
 {

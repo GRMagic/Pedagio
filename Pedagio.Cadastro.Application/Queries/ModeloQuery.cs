@@ -1,4 +1,4 @@
-﻿using Pedagio.Cadastro.Data;
+﻿using Pedagio.Cadastro.Application.Stores;
 using Pedagio.Cadastro.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;

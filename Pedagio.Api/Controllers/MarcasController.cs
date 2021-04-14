@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -8,8 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Pedagio.Api.ViewModels;
 using Pedagio.Cadastro.Application.Commands.Marca;
 using Pedagio.Cadastro.Application.Queries;
-using Pedagio.Cadastro.Data;
-using Pedagio.Cadastro.Domain;
 
 namespace Pedagio.Api.Controllers
 {

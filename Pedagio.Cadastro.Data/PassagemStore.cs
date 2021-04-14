@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Pedagio.Cadastro.Application.Stores;
 using Pedagio.Cadastro.Data.Dto;
 using Pedagio.Cadastro.Domain;
 using System.Collections.Generic;
@@ -17,12 +18,12 @@ namespace Pedagio.Cadastro.Data
             _dbConnection = dbConnection;
         }
 
-        public async Task<int> InserirAsync(Passagem passagem)
+        public Task<int> InserirAsync(Passagem passagem)
         {
             const string sql = @"insert into passagens (id_passagem, id_carro, momento, evasao) values (@Id, @IdCarro, @Momento, @Evasao); select last_insert_id();";
 
             var dto = new PassagemDto(passagem);
-            return await _dbConnection.ExecuteScalarAsync<int>(sql, dto);
+            return _dbConnection.ExecuteScalarAsync<int>(sql, dto);
         }
 
         public async Task<bool> AtualizarAsync(Passagem passagem)
