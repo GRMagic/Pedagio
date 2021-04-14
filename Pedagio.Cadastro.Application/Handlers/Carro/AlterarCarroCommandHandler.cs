@@ -8,9 +8,9 @@ namespace Pedagio.Cadastro.Application.Handlers.Modelo
 {
     public class AlterarCarroCommandHandler : IRequestHandler<AlterarCarroCommand, bool>
     {
-        private readonly ICarroStore _carroStore;
+        private readonly ICarroCommandStore _carroStore;
 
-        public AlterarCarroCommandHandler(ICarroStore carroStore)
+        public AlterarCarroCommandHandler(ICarroCommandStore carroStore)
         {
             _carroStore = carroStore;
         }

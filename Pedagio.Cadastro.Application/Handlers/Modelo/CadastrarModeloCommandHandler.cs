@@ -11,9 +11,9 @@ namespace Pedagio.Cadastro.Application.Handlers.Modelo
 {
     public class CadastrarModeloCommandHandler : IRequestHandler<CadastrarModeloCommand, int>
     {
-        private readonly IModeloStore _modeloStore;
+        private readonly IModeloCommandStore _modeloStore;
 
-        public CadastrarModeloCommandHandler(IModeloStore modeloStore)
+        public CadastrarModeloCommandHandler(IModeloCommandStore modeloStore)
         {
             _modeloStore = modeloStore;
         }

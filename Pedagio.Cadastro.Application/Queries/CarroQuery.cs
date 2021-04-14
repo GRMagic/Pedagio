@@ -7,9 +7,9 @@ namespace Pedagio.Cadastro.Application.Queries
 {
     public class CarroQuery : ICarroQuery
     {
-        private readonly ICarroStore _carroStore;
+        private readonly ICarroQueryStore _carroStore;
 
-        public CarroQuery(ICarroStore carroStore)
+        public CarroQuery(ICarroQueryStore carroStore)
         {
             _carroStore = carroStore;
         }

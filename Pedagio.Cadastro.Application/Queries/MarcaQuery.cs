@@ -7,21 +7,21 @@ namespace Pedagio.Cadastro.Application.Queries
 {
     public class MarcaQuery : IMarcaQuery
     {
-        private readonly IMarcaStore _marcaStore;
+        private readonly IMarcaQueryStore _marcaQueryStore;
 
-        public MarcaQuery(IMarcaStore marcaStore)
+        public MarcaQuery(IMarcaQueryStore marcaStore)
         {
-            _marcaStore = marcaStore;
+            _marcaQueryStore = marcaStore;
         }
 
         public async Task<IEnumerable<Marca>> BuscarAsync(int skip = 0, int take = int.MaxValue)
         {
-            return await _marcaStore.BuscarAsync(skip, take);
+            return await _marcaQueryStore.BuscarAsync(skip, take);
         }
 
         public async Task<Marca> BuscarPorIdAsync(int id)
         {
-            return await _marcaStore.BuscarPorIdAsync(id);
+            return await _marcaQueryStore.BuscarPorIdAsync(id);
         }
     }
 }

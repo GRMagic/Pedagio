@@ -11,9 +11,9 @@ namespace Pedagio.Cadastro.Application.Handlers.Marca
 {
     public class ExcluirMarcaCommandHandler : IRequestHandler<ExcluirMarcaCommand, bool>
     {
-        private readonly IMarcaStore _marcaStore;
+        private readonly IMarcaCommandStore _marcaStore;
 
-        public ExcluirMarcaCommandHandler(IMarcaStore marcaStore)
+        public ExcluirMarcaCommandHandler(IMarcaCommandStore marcaStore)
         {
             _marcaStore = marcaStore;
         }

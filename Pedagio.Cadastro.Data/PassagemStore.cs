@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pedagio.Cadastro.Data
 {
-    public class PassagemStore : IPassagemStore
+    public class PassagemStore : IPassagemCommandStore, IPassagemQueryStore
     {
         private IDbConnection _dbConnection;
 

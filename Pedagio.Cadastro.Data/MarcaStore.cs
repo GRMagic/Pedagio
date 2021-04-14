@@ -1,17 +1,13 @@
 ﻿using Dapper;
-using MySql.Data.MySqlClient;
 using Pedagio.Cadastro.Application.Stores;
 using Pedagio.Cadastro.Domain;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Pedagio.Cadastro.Data
 {
-    public class MarcaStore : IMarcaStore
+    public class MarcaStore : IMarcaCommandStore, IMarcaQueryStore
     {
         private IDbConnection _dbConnection;
 

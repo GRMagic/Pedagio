@@ -9,18 +9,20 @@ namespace Pedagio.Cadastro.Application.Services
 {
     public class PassagemService : IPassagemService
     {
-        private readonly IPassagemStore _passagemStore;
-        private readonly ICarroStore _carroStore;
+        private readonly IPassagemCommandStore _passagemStore;
+        private readonly ICarroCommandStore _carroCommandStore;
+        private readonly ICarroQueryStore _carroQueryStore;
 
-        public PassagemService(IPassagemStore passagemStore, ICarroStore carroStore)
+        public PassagemService(IPassagemCommandStore passagemStore, ICarroCommandStore carroCommandStore, ICarroQueryStore carroQueryStore)
         {
             _passagemStore = passagemStore;
-            _carroStore = carroStore;
+            _carroCommandStore = carroCommandStore;
+            _carroQueryStore = carroQueryStore;
         }
 
         public async Task<int> EfetuarPassagemAsync(string placa)
         {
-            var carro = await _carroStore.BuscarPorPlacaAsync(placa);
+            var carro = await _carroQueryStore.BuscarPorPlacaAsync(placa);
             if(carro == null)
             {
                 throw new BusinessException(Language.Mensagens.ErroPlacaNaoEncontrada);
@@ -37,14 +39,14 @@ namespace Pedagio.Cadastro.Application.Services
 
         public async Task<int> RegistrarEvasaoAsync(string placa)
         {
-            var carro = await _carroStore.BuscarPorPlacaAsync(placa);
+            var carro = await _carroQueryStore.BuscarPorPlacaAsync(placa);
             if (carro == null)
             {
                 carro = new Carro
                 {
                     Placa = placa
                 };
-                carro.Id = await _carroStore.InserirAsync(carro);
+                carro.Id = await _carroCommandStore.InserirAsync(carro);
             }
 
             return await RegistrarEvasao(carro);
@@ -52,7 +54,7 @@ namespace Pedagio.Cadastro.Application.Services
 
         public async Task<int> RegistrarEvasaoAsync(int idCarro)
         {
-            var carro = await _carroStore.BuscarPorIdAsync(idCarro);
+            var carro = await _carroQueryStore.BuscarPorIdAsync(idCarro);
             if (carro == null)
             {
                 throw new BusinessException(Language.Mensagens.ErroIdCarroNaoEncontrado);

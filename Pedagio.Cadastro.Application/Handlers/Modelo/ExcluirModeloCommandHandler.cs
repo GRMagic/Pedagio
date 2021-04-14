@@ -8,9 +8,9 @@ namespace Pedagio.Cadastro.Application.Handlers.Modelo
 {
     public class ExcluirModeloCommandHandler : IRequestHandler<ExcluirModeloCommand, bool>
     {
-        private readonly IModeloStore _modeloStore;
+        private readonly IModeloCommandStore _modeloStore;
 
-        public ExcluirModeloCommandHandler(IModeloStore modeloStore)
+        public ExcluirModeloCommandHandler(IModeloCommandStore modeloStore)
         {
             _modeloStore = modeloStore;
         }

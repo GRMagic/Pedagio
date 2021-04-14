@@ -11,9 +11,9 @@ namespace Pedagio.Cadastro.Application.Handlers.Modelo
 {
     public class AlterarModeloCommandHandler : IRequestHandler<AlterarModeloCommand, bool>
     {
-        private readonly IModeloStore _modeloStore;
+        private readonly IModeloCommandStore _modeloStore;
 
-        public AlterarModeloCommandHandler(IModeloStore modeloStore)
+        public AlterarModeloCommandHandler(IModeloCommandStore modeloStore)
         {
             _modeloStore = modeloStore;
         }

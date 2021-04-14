@@ -8,9 +8,9 @@ namespace Pedagio.Cadastro.Application.Handlers.Carro
 {
     public class ExcluirCarroCommandHandler : IRequestHandler<ExcluirCarroCommand, bool>
     {
-        private readonly ICarroStore _carroStore;
+        private readonly ICarroCommandStore _carroStore;
 
-        public ExcluirCarroCommandHandler(ICarroStore carroStore)
+        public ExcluirCarroCommandHandler(ICarroCommandStore carroStore)
         {
             _carroStore = carroStore;
         }

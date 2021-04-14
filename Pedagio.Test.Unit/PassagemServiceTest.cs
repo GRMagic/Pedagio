@@ -21,7 +21,7 @@ namespace Pedagio.Test.Unit
             // Arrange
             var placa = "abc1234";
             var autoMocker = new NSubstituteAutoMocker<PassagemService>();
-            autoMocker.Get<ICarroStore>().BuscarPorPlacaAsync(placa).Returns(Task.FromResult<Carro>(null));
+            autoMocker.Get<ICarroQueryStore>().BuscarPorPlacaAsync(placa).Returns(Task.FromResult<Carro>(null));
             var esperado = new BusinessException(Language.Mensagens.ErroPlacaNaoEncontrada);
             
             var passagemService = autoMocker.ClassUnderTest;
@@ -50,8 +50,8 @@ namespace Pedagio.Test.Unit
             };
             var idPassagem = 456;
             var autoMocker = new NSubstituteAutoMocker<PassagemService>();
-            autoMocker.Get<ICarroStore>().BuscarPorPlacaAsync(carro.Placa).Returns(Task.FromResult(carro));
-            autoMocker.Get<IPassagemStore>().InserirAsync(Arg.Any<Passagem>()).Returns(Task.FromResult(idPassagem));
+            autoMocker.Get<ICarroQueryStore>().BuscarPorPlacaAsync(carro.Placa).Returns(Task.FromResult(carro));
+            autoMocker.Get<IPassagemCommandStore>().InserirAsync(Arg.Any<Passagem>()).Returns(Task.FromResult(idPassagem));
 
             var passagemService = autoMocker.ClassUnderTest;
 
@@ -75,8 +75,8 @@ namespace Pedagio.Test.Unit
             };
             var idPassagem = 456;
             var autoMocker = new NSubstituteAutoMocker<PassagemService>();
-            autoMocker.Get<ICarroStore>().BuscarPorPlacaAsync(carro.Placa).Returns(Task.FromResult(carro));
-            autoMocker.Get<IPassagemStore>().InserirAsync(Arg.Any<Passagem>()).Returns(Task.FromResult(idPassagem));
+            autoMocker.Get<ICarroQueryStore>().BuscarPorPlacaAsync(carro.Placa).Returns(Task.FromResult(carro));
+            autoMocker.Get<IPassagemCommandStore>().InserirAsync(Arg.Any<Passagem>()).Returns(Task.FromResult(idPassagem));
 
             var passagemService = autoMocker.ClassUnderTest;
 
@@ -86,7 +86,7 @@ namespace Pedagio.Test.Unit
             // Assert
             Assert.Equal(idPassagem, resposta);
 
-            var chamada = autoMocker.Get<IPassagemStore>()
+            var chamada = autoMocker.Get<IPassagemCommandStore>()
                 .ReceivedCalls()
                 .Where(c => c.GetMethodInfo().Name == "InserirAsync")
                 .FirstOrDefault();
@@ -110,13 +110,13 @@ namespace Pedagio.Test.Unit
             var resposta = await passagemService.RegistrarEvasaoAsync(placa);
 
             // Assert
-            var chamadaInserirCarro = autoMocker.Get<ICarroStore>()
+            var chamadaInserirCarro = autoMocker.Get<ICarroCommandStore>()
                 .ReceivedCalls()
                 .Where(c => c.GetMethodInfo().Name == "InserirAsync")
                 .FirstOrDefault();
             Assert.NotNull(chamadaInserirCarro);
 
-            var chamadaInserirPassagem = autoMocker.Get<IPassagemStore>()
+            var chamadaInserirPassagem = autoMocker.Get<IPassagemCommandStore>()
                 .ReceivedCalls()
                 .Where(c => c.GetMethodInfo().Name == "InserirAsync")
                 .FirstOrDefault();

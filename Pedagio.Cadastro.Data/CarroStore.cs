@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pedagio.Cadastro.Data
 {
-    public class CarroStore : ICarroStore
+    public class CarroStore : ICarroCommandStore, ICarroQueryStore
     {
         private IDbConnection _dbConnection;
 

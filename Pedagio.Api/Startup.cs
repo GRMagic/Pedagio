@@ -34,10 +34,14 @@ namespace Pedagio.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDbConnection>(db => ConexaoBanco.Conectar(Configuration.GetConnectionString("AppConnectionString")));
-            services.AddScoped<IMarcaStore, MarcaStore>();
-            services.AddScoped<IModeloStore, ModeloStore>();
-            services.AddScoped<ICarroStore, CarroStore>();
-            services.AddScoped<IPassagemStore, PassagemStore>();
+            services.AddScoped<IMarcaCommandStore, MarcaStore>();
+            services.AddScoped<IMarcaQueryStore, MarcaStore>();
+            services.AddScoped<IModeloCommandStore, ModeloStore>();
+            services.AddScoped<IModeloQueryStore, ModeloStore>();
+            services.AddScoped<ICarroCommandStore, CarroStore>();
+            services.AddScoped<ICarroQueryStore, CarroStore>();
+            services.AddScoped<IPassagemCommandStore, PassagemStore>();
+            services.AddScoped<IPassagemQueryStore, PassagemStore>();
             services.AddScoped<IMarcaQuery, MarcaQuery>();
             services.AddScoped<IModeloQuery, ModeloQuery>();
             services.AddScoped<ICarroQuery, CarroQuery>();

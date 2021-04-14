@@ -11,9 +11,9 @@ namespace Pedagio.Cadastro.Application.Handlers.Marca
 {
     public class CadastrarMarcaCommandHandler : IRequestHandler<CadastrarMarcaCommand, int>
     {
-        private readonly IMarcaStore _marcaStore;
+        private readonly IMarcaCommandStore _marcaStore;
 
-        public CadastrarMarcaCommandHandler(IMarcaStore marcaStore)
+        public CadastrarMarcaCommandHandler(IMarcaCommandStore marcaStore)
         {
             _marcaStore = marcaStore;
         }
